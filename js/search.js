@@ -70,3 +70,11 @@ document.getElementById('search').addEventListener('click', function () {
     displaySearch.search(name, type);
     // console.log(name , type);
 });
+
+
+const searchByMenu = document.querySelectorAll('.search-by-btn');
+for( const sByM of searchByMenu) {
+    sByM.addEventListener('click', function() {
+        document.querySelector('.dropdown-menu').classList.toggle('show');
+    });
+}
