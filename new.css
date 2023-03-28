@@ -106,6 +106,10 @@
 /* === Import template variables === */
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
+.dropdown-menu.show {
+  display: block;
+}
+
 
 .login-pop {
   position: absolute !important;
