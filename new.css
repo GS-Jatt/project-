@@ -1,115 +1,7 @@
-/*-------------------------------------------------------------------
-  ===== Table of Contents =====
 
-  * Bootstrap functions
-  * Template variables
-  * SCSS Compass Functions
-  * Boostrap Main SCSS
-  * Template mixins
-    + Animation Mixins
-    + Background Mixins
-    + Badge Mixins
-    + Button Mixins
-    + Miscellaneous Mixins
-    + BlockQuote Mixins
-    + Cards Mixins
-    + Color Functions Mixins
-    + Tooltips
-    + popovers
-  * Core Styles
-    + Reset Styles
-    + Fonts
-    + Functions
-    + Backgrounds
-    + Typography
-    + Miscellaneous
-    + Footer
-    + Layouts
-    + Utilities
-    + Demo styles
-  * Components
-    + Accordions
-    + Badges
-    + Bootstrap Alerts
-    + Boostrap Progress
-    + Buttons
-    + Breadcrumbs
-    + Cards
-    + Checkboxes and Radios
-    + Dropdowns
-    + Forms
-    + Google maps
-    + Icons
-    + Loaders
-    + Lists
-    + Modals
-    + Pagination
-    + Popover
-    + Preview
-    + Tables
-    + Tabs
-    + Timeline
-    + Todo List
-    + Tooltips
-    + User Profile
-    + Pricing table
-  * Email
-    + Mail Sidebar
-    + Mail List Container
-    + Message Content
-  * Plugin Overrides
-    + Ace Editor
-    + Avgrund Popup
-    + Bootstrap Tour
-    + Chartist
-    + CodeMirror
-    + Colcade
-    + Colorpicker
-    + Context Menu
-    + Data Tables
-    + Datepicker
-    + Dropify
-    + Dropzone
-    + Flot chart
-    + Full Calendar
-    + Google Charts
-    + Icheck
-    + Jquery File Upload
-    + Js-grid
-    + Jvectormap
-    + Light Gallery
-    + Listify
-    + No-ui-slider
-    + Owl-carousel
-    + Progressbar-js
-    + Pws-tabs
-    + Quill Editor
-    + Rating
-    + Select2
-    + Summernote Editor
-    + SweetAlert
-    + Switchery
-    + Tags
-    + TinyMCE Editor
-    + Toast
-    + Typeahead
-    + Wysi Editor
-    + X-editable
-    + Wizard
-  * Landing screens
-    + Auth
-    + Lock Screen
--------------------------------------------------------------------*/
-/*-------------------------------------------------------------------*/
-/* === Import Bootstrap functions and variables === */
-/*-------------------------------------------------------------------*/
-/* === Import template variables === */
-/*-------------------------------------------------------------------*/
-/* === SCSS Compass Functions === */
 .dropdown-menu.show {
   display: block;
 }
-
 
 .login-pop {
   position: absolute !important;
@@ -134,11 +26,21 @@
   border: none;
   width: 250px;
 }
-
+.btn-buttom-bar{
+  background-color: transparent;
+  border: none;
+  width: 60px;
+}
 .search-bar {
   top: 70px !important;
   left: 244px !important;
 }
+.w-75 {
+  width: 75% !important; }
+
+  .buttom-bar{
+    display: none;
+  }
 
 
 
@@ -304,8 +206,9 @@ button {
 
 button,
 [type="button"],
-[type="submit"] {
-  -webkit-appearance: button; }
+/* [type="submit"] {
+  /* -webkit-appearance: button;  */
+/* } */ */
 
 button:not(:disabled),
 [type="button"]:not(:disabled),
@@ -329,7 +232,8 @@ input[type="checkbox"] {
 
 [type="search"] {
   outline-offset: -2px;
-  -webkit-appearance: none; }
+  /* -webkit-appearance: none;  */
+}
 
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
@@ -770,6 +674,12 @@ button.bg-danger:focus {
   right: 0;
   left: 0;
   z-index: 1030; }
+  .fixed-bottom {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1030; }
 
 .w-100 {
   width: 100% !important; }
@@ -920,9 +830,10 @@ body {
   margin: 0;
   overflow-x: hidden; }
 
-.form-control, .form-control:focus {
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none; }
+/* .form-control, .form-control:focus {
+  /* -webkit-box-shadow: none; */
+  /* -moz-box-shadow: none; */
+ /* } */ */
 
 .form-control {
   box-shadow: none; }
@@ -1088,6 +999,9 @@ html {
     color: #00d25b;
     font-size: inherit; }
   @media (max-width: 991px) {
+    .buttom-bar {
+      display: inline;
+    }
     .footer {
       margin-left: 0;
       width: 100%; } }
@@ -1854,8 +1768,13 @@ html {
   transition: all 0.25s ease;
   width: calc(100% - 244px); }
   @media (max-width: 992px) {
+    .search-bar {
+      left: 0px !important;
+    }
     .page-body-wrapper {
-      width: 100%; } }
+      width: 100%; } 
+    
+  }
 
 .container-scroller {
   display: flex;

@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <title>Liberary</title>
-  
+
   <!-- Layout styles -->
   <link rel="stylesheet" href="assets/css/icons.css">
   <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
@@ -47,7 +47,7 @@
           </button>
         </li>
         <li class="nav-item menu-items admin-only hiddennn ">
-          <button class="nav-link btn-side-bar">
+          <button class="nav-link btn-side-bar" id="issued-to-user-btn"> 
             <span class="menu-icon">
               <i class="mdi mdi-speedometer"></i>
             </span>
@@ -72,7 +72,7 @@
           </button>
         </li>
         <li class="nav-item menu-items admin-only hiddennn">
-          <button class="nav-link btn-side-bar">
+          <button class="nav-link btn-side-bar" id="issue-page">
             <span class="menu-icon">
               <i class="mdi mdi-speedometer"></i>
             </span>
@@ -82,17 +82,17 @@
 
       </ul>
     </nav>
-  
+
     <div class="container-fluid page-body-wrapper">
 
       <!-- top bar-->
       <nav class="navbar p-0 fixed-top d-flex flex-row">
         <!-- logo  -->
-      
-        
-    
+
+
+
         <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
- <ul class="navbar-nav w-100">
+          <ul class="navbar-nav w-100">
             <li class="nav-item w-100">
               <a class="sidebar-brand brand-logo" href="index.html"><img height="63px" src="logo.png" alt="logo" /></a>
 
@@ -136,27 +136,30 @@
                 <form class="nav-link  d-flex">
                   <input type="text" class="form-control" placeholder="Search products" id="search-txt">
                   <div class="dropdown">
-                    <button type="button" class="btn btn-dark dropdown-toggle search-by-btn" 
-                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn btn-dark dropdown-toggle search-by-btn" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
                       <i class="mdi mdi-filter-cog"></i>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton7"
                       style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 39px, 0px);">
                       <h6 class="dropdown-header">Search By</h6>
                       <div class="form-check">
-                        <input class="form-check-input search-by-btn" type="radio" name="type" id="fiction" value="name" checked>
+                        <input class="form-check-input search-by-btn" type="radio" name="type" id="fiction" value="name"
+                          checked>
                         <label class="form-check-label" for="fiction">
                           by Name
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input search-by-btn" type="radio" name="type" id="programming" value="athuor">
+                        <input class="form-check-input search-by-btn" type="radio" name="type" id="programming"
+                          value="athuor">
                         <label class="form-check-label" for="athuor">
                           athuor
                         </label>
                       </div>
                       <div class="form-check disabled">
-                        <input class="form-check-input search-by-btn" type="radio" name="type" id="cooking" value="publisher">
+                        <input class="form-check-input search-by-btn" type="radio" name="type" id="cooking"
+                          value="publisher">
                         <label class="form-check-label" for="cooking">
                           Publisher
                         </label>
@@ -172,7 +175,7 @@
                 <button type="button" class="btn btn-dark btn-rounded btn-icon" id="search">
                   <i class="mdi mdi-note-search"></i>
                 </button>
-                
+
               </li>
 
             </ul>
@@ -189,7 +192,10 @@
         <div class="content-wrapper">
           <hr>
           <br>
+
+
           <!-- login page -->
+
 
           <div id="login-p">
             <div class="row">
@@ -226,7 +232,7 @@
 
 
 
-            
+
 
             <!-- login pop -->
             <div class="card col-lg-4 mx-auto login-pop hiddennn">
@@ -314,7 +320,7 @@
                       <label for="type">Book type</label>
                       <input type="text" class="form-control" id="bookType" placeholder="book Type">
                     </div>
-                    
+
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
                     <button class="btn btn-dark">Cancel</button>
                   </form>
@@ -350,7 +356,116 @@
             </div>
           </div>
 
+          <!-- issue a book to std -->
+          <div id="issue-book-user-form" class="hiddennn">
+            <div class="row">
+              <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">issue book form</h4>
+                    <form class="forms-sample" id="issue-book-form">
+                      <div class="form-group">
+                        <label for="user name">User ID</label>
+                        <input type="number" class="form-control" id="user-id" placeholder="User ID">
+                      </div>
+                      <div class="form-group">
+                        <label for="Class">Book ID</label>
+                        <input type="number" class="form-control" id="book-id" placeholder="Book ID">
+                      </div>
+                      <div class="form-group">
+                        <label for="Class">Date</label>
+                        <input type="date" class="form-control" id="date" placeholder="date">
+                      </div>
 
+                      <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">User and book details</h4>
+                    <div class="row">
+                      <div class="col-md-5 grid-margin stretch-card ">
+                        <div class="card">
+                          <div class="card-body">
+                            <h4 class="card-title">User details</h4>
+                            <div class="table-responsive">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th> Name </th>
+                                    <th> Claass </th>
+                                  </tr>
+
+                                </thead>
+                                <tbody id="issue-user-tableBody">
+
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-7 grid-margin 
+                      stretch-card ">
+                        <div class="card">
+                          <div class="card-body">
+                            <h4 class="card-title">book details</h4>
+                            <div class="table-responsive">
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th> Book Name </th>
+                                    <th> auther </th>
+                                    <th> pusblisher </th>
+
+                                  </tr>
+                                </thead>
+                                <tbody id="issue-book-tableBody">
+
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- book issued to user -->
+          <div class="row hiddennn " id="issued-to-user">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Books</h4>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th> Book Name </th>
+                          <th> Id </th>
+                          <th> Date </th>
+                          <th> Student Name </th>
+                          <th> Class </th>
+                          <th> ID </th>
+                        </tr>
+                      </thead>
+                      <tbody id="issued-tableBody">
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
         </div>
@@ -362,7 +477,63 @@
               2023</span>
 
           </div>
+
+
         </footer>
+        <!-- buttom bar -->
+        <div class="buttom-bar hiddennn" id="buttom-bar">
+          <nav class="navbar p-0 fixed-bottom d-flex flex-row ">
+
+            <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch w-100">
+              <ul class="navbar-nav w-100">
+                <li class="nav-item w-100">
+                  <button class="nav-link btn-buttom-bar" id="books1">
+                    <span class="menu-icon">
+                      <i class="mdi mdi-bookshelf"></i>
+                    </span>
+                  </button>
+                </li>
+                <li class="nav-item w-100" id="std-only1">
+                  <button class="nav-link btn-buttom-bar">
+                    <span class="menu-icon">
+                      <i class="mdi mdi-view-dashboard"></i>
+                    </span>
+                  </button>
+                </li>
+                <li class="nav-item w-100 admin-only hiddennn" >
+                  <button class="nav-link btn-buttom-bar" id="issued-to-user-btn1">
+                    <span class="menu-icon">
+                      <i class="mdi mdi-book-check"></i>
+                    </span>
+                  </button>
+                </li>
+                <li class="nav-item w-100 admin-only hiddennn">
+                  <button class="nav-link btn-buttom-bar" id="btn-add-book1">
+                    <span class="menu-icon">
+                      <i class="mdi mdi-book-plus-multiple-outline"></i>
+                    </span>
+                  </button>
+                </li>
+                <li class="nav-item w-100 admin-only hiddennn">
+                  <button class="nav-link btn-buttom-bar" id="btn-add-user1">
+                    <span class="menu-icon">
+                      <i class="mdi mdi-account-multiple-plus"></i>
+                    </span>
+                  </button>
+                </li>
+                <li class="nav-item w-100 admin-only hiddennn">
+                  <button class="nav-link btn-buttom-bar" id="issue-page1">
+                    <span class="menu-icon">
+                      <i class="mdi mdi-notebook-edit-outline"></i>
+                    </span>
+                  </button>
+                </li>
+
+
+              </ul>
+            </div>
+          </nav>
+        </div>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
