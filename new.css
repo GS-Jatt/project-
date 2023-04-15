@@ -554,6 +554,24 @@ input[type="button"].btn-block {
     float: none; }
 
 @media (max-width: 575.98px) { 
+  .table{
+    width: 400px;
+    font-size: 9px;
+    
+  }
+  .table thead th {
+    font-size: 8px;
+    max-width: 58px;
+    width: 58px;
+  }
+  .btn-buttom-bar {
+    width: inherit;
+  }
+  .table th {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  }
   .login-pop {
     left: 0px;
   }
@@ -1120,7 +1138,7 @@ html {
   .table thead th {
     border-top: 0;
     border-bottom-width: 1px;
-    font-weight: 500;
+    /* font-weight: 500; */
     color: #6c7293; }
     .table thead th i {
       margin-left: 0.325rem; }
