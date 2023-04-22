@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-  <title>Liberary</title>
+  <title>Library</title>
 
   <!-- Layout styles -->
   <!-- <link rel="stylesheet" href="assets/css/icons.css"> -->
@@ -15,7 +15,6 @@
   <!-- icon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
 </head>
-
 
 <body>
   <div class="container-scroller">
@@ -27,7 +26,7 @@
         <a class="sidebar-brand brand-logo" href="index.html"><img src="logo.png" alt="logo" /></a>
 
       </div> -->
-      <ul class="nav no-scroll">
+      <ul class="nav no-scroll" >
 
         <li class="nav-item nav-category">
           <span class="nav-link">Navigation</span>
@@ -35,32 +34,32 @@
         <li class="nav-item menu-items">
           <button class="nav-link btn-side-bar" id="books">
             <span class="menu-icon">
-              <i class="mdi mdi-speedometer"></i>
+              <i class="mdi mdi-bookshelf logo-color"></i>
             </span>
             <span class="menu-title"> Books</span>
           </button>
         </li>
         <li class="nav-item menu-items" id="std-only">
-          <button class="nav-link btn-side-bar">
+          <button class="nav-link btn-side-bar" id="dashboard-btn">
             <span class="menu-icon">
-              <i class="mdi mdi-speedometer"></i>
+              <i class="mdi mdi-view-dashboard logo-color" ></i>
             </span>
             <span class="menu-title "> Dashboard</span>
           </button>
         </li>
         <li class="nav-item menu-items admin-only hiddennn ">
-          <button class="nav-link btn-side-bar" id="issued-to-user-btn"> 
+          <button class="nav-link btn-side-bar" id="issued-to-user-btn">
             <span class="menu-icon">
-              <i class="mdi mdi-speedometer"></i>
+              <i class="mdi mdi-book-check logo-color"></i>
             </span>
-            <span class="menu-title"> issued Books</span>
+            <span class="menu-title"> Issued Books</span>
           </button>
         </li>
 
         <li class="nav-item menu-items admin-only hiddennn ">
           <button class="nav-link btn-side-bar" id="btn-add-book">
             <span class="menu-icon">
-              <i class="mdi mdi-speedometer"></i>
+              <i class="mdi mdi-book-plus-multiple-outline logo-color"></i>
             </span>
             <span class="menu-title"> Add new book</span>
           </button>
@@ -68,17 +67,25 @@
         <li class="nav-item menu-items admin-only hiddennn">
           <button class="nav-link btn-side-bar" id="btn-add-user">
             <span class="menu-icon">
-              <i class="mdi mdi-speedometer"></i>
+              <i class="mdi mdi-account-multiple-plus logo-color"></i>
             </span>
-            <span class="menu-title"> add new user</span>
+            <span class="menu-title"> Add new user</span>
           </button>
         </li>
         <li class="nav-item menu-items admin-only hiddennn">
           <button class="nav-link btn-side-bar" id="issue-page">
             <span class="menu-icon">
-              <i class="mdi mdi-speedometer"></i>
+              <i class="mdi mdi-notebook-edit-outline logo-color"></i>
             </span>
             <span class="menu-title"> Issue book</span>
+          </button>
+        </li>
+        <li class="nav-item menu-items admin-only hiddennn">
+          <button class="nav-link btn-side-bar" id="return-p">
+            <span class="menu-icon">
+              <i class="mdi mdi-book-sync logo-color"></i>
+            </span>
+            <span class="menu-title">Book return</span>
           </button>
         </li>
 
@@ -90,8 +97,7 @@
       <!-- top bar-->
       <nav class="navbar p-0 fixed-top d-flex flex-row">
         <!-- logo  -->
-
-
+  
 
         <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
           <ul class="navbar-nav w-100">
@@ -109,20 +115,19 @@
           </ul> -->
           <ul class="navbar-nav navbar-nav-right">
 
-            <li class="nav-item dropdown border-left">
+            <!-- <li class="nav-item dropdown border-left">
               <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#"
                 data-toggle="dropdown">
                 <i class="mdi mdi-bell"></i>
                 <span class="count bg-danger"></span>
               </a>
+            </li> -->
+            <li class="nav-item hiddennn " id="user-logo">
+              <span class="mdi mdi-logout text-danger" onclick="window.location.reload()"></span>
             </li>
-            <li class="nav-item ">
-              <a class="nav-link" id="profileDropdown" href="#" data-toggle="dropdown">
-                <div class="navbar-profile">
-                  <img class="img-xs rounded-circle" src="#" alt=" pic ">
-                  <p class="mb-0 d-none d-sm-block navbar-profile-name">Username</p>
-                </div>
-              </a>
+            <li class="nav-item " id="login-logo">
+              <span class="mdi mdi-login "></span>
+
             </li>
           </ul>
         </div>
@@ -156,7 +161,7 @@
                         <input class="form-check-input search-by-btn" type="radio" name="type" id="programming"
                           value="athuor">
                         <label class="form-check-label" for="athuor">
-                          athuor
+                          author
                         </label>
                       </div>
                       <div class="form-check disabled">
@@ -173,10 +178,11 @@
                         </label>
                       </div>
                     </div>
+                  </div>
+                  <button type="submit" class="btn btn-dark btn-rounded btn-icon" id="search">
+                    <i class="mdi mdi-note-search"></i>
+                  </button>
                 </form>
-                <button type="button" class="btn btn-dark btn-rounded btn-icon" id="search">
-                  <i class="mdi mdi-note-search"></i>
-                </button>
 
               </li>
 
@@ -197,8 +203,6 @@
 
 
           <!-- login page -->
-
-
           <div id="login-p">
             <div class="row">
               <div class="col-md-4 grid-margin stretch-card">
@@ -213,7 +217,7 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="justify-content-between">
-                      <h4 class="card-title mb-1">Welcome to the official Liberary website of Amar Saheed Baba Ajit
+                      <h4 class="card-title mb-1">Welcome to the official Library website of Amar Saheed Baba Ajit
                         Singh
                         Jujhar Singh Memorial College, Bela.</details>
                       </h4>
@@ -237,19 +241,21 @@
 
 
             <!-- login pop -->
-            <div class="card col-lg-4 mx-auto login-pop hiddennn">
+            <div class="card login-pop hiddennn">
               <button class="btnnn">X</button>
               <div class="card-body px-5 py-5">
                 <h3 class="card-title text-left mb-3">Login</h3>
                 <form>
                   <div class="form-group">
-                    <label>Username *</label>
+                    <label>User ID *</label>
                     <input type="text" class="form-control p_input" id="user">
                   </div>
                   <div class="form-group">
                     <label>Password *</label>
-                    <input type="text" class="form-control p_input">
+                    <input type="text" class="form-control p_input" id="passwd">
+                    <p id="check-user"></p>
                   </div>
+
                   <div class="form-group d-flex align-items-center justify-content-between">
                     <div class="form-check">
                       <label class="form-check-label">
@@ -278,11 +284,11 @@
                         <tr>
                           <th> Name </th>
                           <th> Id </th>
-                          <th> auther </th>
-                          <th> pusblisher </th>
-                          <th> type </th>
-                          <th> clocker no </th>
-                          <th> other book option </th>
+                          <th> Author </th>
+                          <th> Publisher </th>
+                          <th> Type </th>
+                          <th> Locker no </th>
+                          <!-- <th> other book option </th> -->
                         </tr>
                       </thead>
                       <tbody id="tableBody">
@@ -303,8 +309,8 @@
                   <h4 class="card-title">Add new Book form</h4>
                   <form class="forms-sample" id="add-book-form">
                     <div class="form-group">
-                      <label for="bookID">Book id</label>
-                      <input type="number" class="form-control" id="bookID" placeholder="Book id"  required="required">
+                      <label for="bookID">Book Id</label>
+                      <input type="number" class="form-control" id="bookID" placeholder="Book id" required="required">
                     </div>
                     <div class="form-group">
                       <label for="book name">Book Name</label>
@@ -312,19 +318,24 @@
                     </div>
                     <div class="form-group">
                       <label for="author">Author</label>
-                      <input type="text" class="form-control" id="author" placeholder="Auther name"  required="required">
+                      <input type="text" class="form-control" id="author" placeholder="Auther name" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="publisher">publisher</label>
-                      <input type="text" class="form-control" id="bookPublisher" placeholder="publisher"  required="required">
+                      <label for="publisher">Publisher</label>
+                      <input type="text" class="form-control" id="bookPublisher" placeholder="publisher"
+                        required="required">
                     </div>
                     <div class="form-group">
                       <label for="type">Book type</label>
-                      <input type="text" class="form-control" id="bookType" placeholder="book Type"  required="required">
+                      <input type="text" class="form-control" id="bookType" placeholder="book Type" required="required">
+                    </div>
+                    <div class="form-group">
+                      <label for="type">Locker No</label>
+                      <input type="number" class="form-control" id="locker-no" placeholder="" required="required">
                     </div>
 
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                    
+
                   </form>
                 </div>
               </div>
@@ -340,18 +351,19 @@
                   <form class="forms-sample" id="add-user-form">
                     <div class="form-group">
                       <label for="user name">User Name</label>
-                      <input type="text" class="form-control" id="userName" placeholder="User name"  required="required">
+                      <input type="text" class="form-control" id="userName" placeholder="User name" required="required">
                     </div>
                     <div class="form-group">
                       <label for="Class">Class</label>
-                      <input type="text" class="form-control" id="classs" placeholder="Class"  required="required">
+                      <input type="text" class="form-control" id="classs" placeholder="Class" required="required">
                     </div>
                     <div class="form-group">
                       <label for="passwd">password</label>
-                      <input type="password" class="form-control" id="passwd" placeholder="password"  required="required">
+                      <input type="password" class="form-control" id="passwd" placeholder="password"
+                        required="required">
                     </div>
                     <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                    
+
                   </form>
                 </div>
               </div>
@@ -368,15 +380,17 @@
                     <form class="forms-sample" id="issue-book-form">
                       <div class="form-group">
                         <label for="user name">User ID</label>
-                        <input type="number" class="form-control" id="user-id" placeholder="User ID"  required="required">
+                        <input type="number" class="form-control" id="user-id" placeholder="User ID"
+                          required="required">
                       </div>
                       <div class="form-group">
                         <label for="Class">Book ID</label>
-                        <input type="number" class="form-control" id="book-id" placeholder="Book ID"  required="required">
+                        <input type="number" class="form-control" id="book-id" placeholder="Book ID"
+                          required="required">
                       </div>
                       <div class="form-group">
                         <label for="Class">Date</label>
-                        <input type="date" class="form-control" id="date" placeholder="date"  required="required">
+                        <input type="date" class="form-control" id="date" placeholder="date" required="required">
                       </div>
 
                       <button type="submit" class="btn btn-primary mr-2">Submit</button>
@@ -390,7 +404,7 @@
                   <div class="card-body">
                     <h4 class="card-title">User and book details</h4>
                     <div class="row">
-                      <div class="col-md-5 grid-margin stretch-card ">
+                      <div class="col-md-6 grid-margin stretch-card ">
                         <div class="card">
                           <div class="card-body">
                             <h4 class="card-title">User details</h4>
@@ -411,7 +425,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-7 grid-margin 
+                      <div class="col-md-6 grid-margin 
                       stretch-card ">
                         <div class="card">
                           <div class="card-body">
@@ -446,7 +460,7 @@
             <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Books</h4>
+                  <h4 class="card-title">issued Books</h4>
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
@@ -469,13 +483,73 @@
             </div>
           </div>
 
+          <!--student dashboard  -->
+          <div class="row hiddennn " id="user-dashboard">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Books</h4>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th> Book Name </th>
+                          <th> Id </th>
+                          <th> Date </th>
+                        </tr>
+                      </thead>
+                      <tbody id="dashboard-tableBody">
+
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- book return -->
+          <div class="row hiddennn " id="return-page">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Book Id </h4>
+                  <form class="forms-sample" id="return-book-form">
+                    <div class="form-group">
+                      <label for="user name">Book ID</label>
+                      <input type="number" class="form-control" id="return-book-id" placeholder="Book ID"
+                        required="required">
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th> Book Name </th>
+                            <th> Author </th>
+                            <th> Name </th>
+                            <th> ID </th>
+                            <th> Locker no </th>
+                            <!-- <th> other book option </th> -->
+                          </tr>
+                        </thead>
+                        <tbody id="return-tableBody">
+  
+                        </tbody>
+                      </table>
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © GS.com
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © .com
               2023</span>
 
           </div>
@@ -502,7 +576,7 @@
                     </span>
                   </button>
                 </li>
-                <li class="nav-item w-100 admin-only hiddennn" >
+                <li class="nav-item w-100 admin-only hiddennn">
                   <button class="nav-link btn-buttom-bar" id="issued-to-user-btn1">
                     <span class="menu-icon">
                       <i class="mdi mdi-book-check"></i>
@@ -530,6 +604,14 @@
                     </span>
                   </button>
                 </li>
+                <li class="nav-item w-100 admin-only hiddennn">
+                  <button class="nav-link btn-buttom-bar" id="return-p1">
+                    <span class="menu-icon">
+                      <i class="mdi mdi-book-sync"></i>
+                    </span>
+                  </button>
+                </li>
+                
 
 
               </ul>
@@ -543,7 +625,7 @@
     <!-- page-body-wrapper ends -->
   </div>
 
-  <script  src="js/script.js"></script>
+  <script src="/js/script.js"></script>
 
 </body>
 
