@@ -1,10 +1,9 @@
-'use strict';
+'use strict'
+
+
 let users;
 let jBook;
 let books;
-const adminP = document.querySelectorAll('.admin-only');
-const stdP = document.getElementById('std-p');
-const loginP = document.getElementById('login-p');
 
 
 // getting login data from server
@@ -49,62 +48,25 @@ function hidAll(){
     document.getElementById('search-bar').classList.add('hiddennn');
     document.getElementById('issue-book-user-form').classList.add('hiddennn');
     document.getElementById('issued-to-user').classList.add('hiddennn');
+    document.getElementById('user-dashboard').classList.add('hiddennn');
+    document.getElementById('return-page').classList.add('hiddennn');
 
 }
 
-
-
-
-                    
-
-// login pop 
-document.querySelector("#login").addEventListener("click", function () {
-    document.querySelector('.login-pop').classList.toggle('hiddennn');
+document.getElementById('issued-to-user-btn').addEventListener('click', function(){
+    hidAll();
+    document.getElementById('issued-to-user').classList.toggle('hiddennn');
 });
 
-document.querySelector(".btnnn").addEventListener("click", function () {
-    document.querySelector('.login-pop').classList.toggle('hiddennn');
-});
-
-const hid = function () {
-    loginP.classList.toggle('hiddennn');
-    document.getElementById('sidebar').classList.toggle('hiddennn');
-    document.getElementById('buttom-bar').classList.toggle('hiddennn');
-}
-
-const hidAdmin = function() {
-    for(const btn of adminP) {
-        btn.classList.toggle('hiddennn');
-    }
-
-}
-
-
-document.querySelector("#subb").addEventListener("click", function () {
-    const user = document.querySelector('#user').value;
-
-    // console.log(uPower);
-    if (users.admin.name === user) {
-        // adminP.classList.toggle('hiddennn');
-        stdP.classList.toggle('hiddennn');
-        document.getElementById('std-only').classList.toggle('hiddennn');
-        document.getElementById('std-only1').classList.toggle('hiddennn');
-        hidAdmin();
-        hid();
-    }
-    else {
-        // adminP.classList.toggle('hiddennn');
-        stdP.classList.toggle('hiddennn');
-        // document.getElementById('userForm').classList.toggle('hiddennn');
-        hid();
-    }
-
+document.getElementById('issued-to-user-btn1').addEventListener('click', function(){
+    hidAll();
+    document.getElementById('issued-to-user').classList.toggle('hiddennn');
 });
 
 
 // lib script 
 class Book {
-    constructor(id, name, author, publisher, type) {
+    constructor(id, name, author, publisher, type, lockerNo) {
         this.id = id;
         this.name = name;
         this.author = author;
@@ -112,24 +74,44 @@ class Book {
         this.type = type;
         this.issuedTo = 0;
         this.issuedDate = 0;
+        this.lockerNo = lockerNo;
     }
 }
 
 // class to display new add book
 class Display {
-    add(book) {
-        console.log("Adding to UI");
+    add(books) {
         let tableBody = document.getElementById('tableBody');
-        const uiString = `<tr>
+        for (const book of books) {
+            if (book.issuedTo !== 0) {
+                const issueed = new Display().issue;
+                issueed(book);
+            }
+            else {
+                const uiString = `<tr>
                             <td>${book.name}</td>
                             <td>${book.id}</td>
                             <td>${book.author}</td>
                             <td>${book.publisher}</td>
                             <td>${book.type}</td>
-                            <td>  </td>
-                            <td>  </td>
+                            <td>${book.lockerNo}</td>
+    
                           </tr>`;
-        tableBody.innerHTML += uiString;
+                tableBody.innerHTML += uiString;
+            }
+        }
+
+        // let tableBody = document.getElementById('tableBody');
+        // const uiString = `<tr>
+        //                     <td>${book.name}</td>
+        //                     <td>${book.id}</td>
+        //                     <td>${book.author}</td>
+        //                     <td>${book.publisher}</td>
+        //                     <td>${book.type}</td>
+        //                     <td>${book.lockerNo}</td>
+
+        //                   </tr>`;
+        // tableBody.innerHTML += uiString;
     }
     issue(book) {
         let user;
@@ -148,6 +130,23 @@ class Display {
                             <td>${user.id}</td>
                           </tr>`;
         tableBody.innerHTML += uiString;
+    }
+    dashboard(user) {
+
+        for (const id of user.issueBooksId) {
+            for (const book of books) {
+                if (book.id === id) {
+
+                    let tableBody = document.getElementById('dashboard-tableBody');
+                    const uiString = `<tr>
+                            <td>${book.name}</td>
+                            <td>${book.id}</td>
+                            <td>${book.issuedDate}</td>
+                          </tr>`;
+                    tableBody.innerHTML += uiString;
+                }
+            }
+        }
     }
 
     clear() {
@@ -185,226 +184,6 @@ class Display {
 
     }
 }
-
-
-// displaying books
-
-setTimeout(function () {
-
-
-    let tableBody = document.getElementById('tableBody');
-    for (const book of books) {
-        if (book.issuedTo !== 0) {
-            const issueed = new Display().issue;
-            issueed(book);
-        }
-        else {
-            const uiString = `<tr>
-                            <td>${book.name}</td>
-                            <td>${book.id}</td>
-                            <td>${book.author}</td>
-                            <td>${book.publisher}</td>
-                            <td>${book.type}</td>
-                            <td>  </td>
-                            <td>  </td>
-                          </tr>`;
-            tableBody.innerHTML += uiString;
-        }
-    }
-}, 5000);
-
-document.getElementById('books').addEventListener('click', function () {
-    hidAll();
-    document.getElementById('std-p').classList.toggle('hiddennn');
-    document.getElementById('search-bar').classList.toggle('hiddennn');
-
-});
-
-document.getElementById('books1').addEventListener('click', function () {
-    hidAll();
-    document.getElementById('std-p').classList.toggle('hiddennn');
-    document.getElementById('search-bar').classList.toggle('hiddennn');
-
-});
-
-
-class DisplaySearchBook {
-
-    deleteBook(books, indexs) {
-        indexs = indexs.reverse();
-        for (const index of indexs) {
-            books.splice(index, 1);
-        }
-        return books
-    }
-
-    search(bookName, findBy) {
-        document.getElementById('tableBody').innerHTML = '';
-        const add = new Display().add;
-        const sBa = [];
-        let clonedBooks = JSON.parse(JSON.stringify(books));
-        for (const [index, book] of books.entries()) {
-            if (book[findBy].toLowerCase() === bookName.toLowerCase()){
-                add(book);
-                sBa.push(index);
-            }
-        }
-        clonedBooks = this.deleteBook(clonedBooks, sBa);
-        const sName = bookName.split(' ');
-
-        for (const book of clonedBooks) {
-            const cBook = book[findBy].split(' ');
-            loop1:
-            for (const name of sName) {
-                loop2:
-                for (const spName of cBook) {
-                    if (spName.toLowerCase() === name.toLowerCase()) {
-                        add(book);
-                        break loop1;
-                    }
-                }
-            }
-        }
-
-    }
-
-}
-
-document.getElementById('search').addEventListener('click', function () {
-    const name = document.getElementById('search-txt').value;
-    let type;
-    let fiction = document.getElementById('fiction');
-    let programming = document.getElementById('programming');
-    let cooking = document.getElementById('cooking');
-    let btype = document.getElementById('btype');
-    const displaySearch = new DisplaySearchBook();
-
-    if (fiction.checked) {
-        type = fiction.value;
-    }
-    else if (programming.checked) {
-        type = programming.value;
-    }
-    else if (cooking.checked) {
-        type = cooking.value;
-    }
-    else if (btype.checked) {
-        type = btype.value;
-    }
-    displaySearch.search(name, type);
-    // console.log(name , type);
-});
-
-const searchByMenu = document.querySelectorAll('.search-by-btn');
-for( const sByM of searchByMenu) {
-    sByM.addEventListener('click', function() {
-        document.querySelector('.dropdown-menu').classList.toggle('show');
-    });
-}
-
-document.getElementById('issued-to-user-btn').addEventListener('click', function(){
-    hidAll();
-    document.getElementById('issued-to-user').classList.toggle('hiddennn');
-});
-
-document.getElementById('issued-to-user-btn1').addEventListener('click', function(){
-    hidAll();
-    document.getElementById('issued-to-user').classList.toggle('hiddennn');
-});
-
-const userDetails = document.getElementById('issue-user-tableBody');
-const bookDetails = document.getElementById('issue-book-tableBody');
-let indexOfUser, indexOfBook, userId, bookId, checker1 = 0, checker2=0;
-
-
-
-document.getElementById('issue-page').addEventListener('click', function () {
-    hidAll()
-    document.getElementById('issue-book-user-form').classList.toggle('hiddennn');
-})
-
-document.getElementById('issue-page1').addEventListener('click', function () {
-    hidAll()
-    document.getElementById('issue-book-user-form').classList.toggle('hiddennn');
-})
-
-document.getElementById('user-id').addEventListener('change', function (e) {
-
-    for (const [index, user] of users.users.entries()) {
-        if (user.id === Number(e.target.value)) {
-            userDetails.innerHTML = `<tr>
-                                     <td>${user.name}</td>
-                                     <td>${user.class}</td>
-                                 </tr>`;
-            indexOfUser = index;
-            userId = user.id;
-            checker1=1;
-            break;
-        }
-        else{
-            checker1=0;
-            userDetails.innerHTML = '';
-        }
-
-    }
-});
-
-document.getElementById('book-id').addEventListener('change', function (e) {
-    for (const [index, book] of books.entries()) {
-        if (Number(book.id) === Number(e.target.value)) {
-            bookDetails.innerHTML = `<tr>
-                                     <td>${book.name}</td>
-                                     <td>${book.author}</td>
-                                     <td>${book.publisher}</td>
-
-                                 </tr>`;
-            indexOfBook = index;
-            bookId = book.id;
-            checker2=1;
-            break;
-        }
-        else{
-            checker2=0;
-            bookDetails.innerHTML ='';
-        }
-
-    }
-});
-
-// issuing book to user
-const issueForm = document.getElementById('issue-book-form');
-issueForm.addEventListener('submit', function (e) {
-    if (checker1 + checker2 === 2) {
-        users.users[indexOfUser].issueBooksId.push(bookId);
-        books[indexOfBook].issuedTo = userId;
-        books[indexOfBook].issuedDate = document.getElementById('date').value;
-        const issueed = new Display().issue;
-        issueed(books[indexOfBook]);
-
-
-        // uploading issued details to database
-        let req = new XMLHttpRequest();
-
-        req.onreadystatechange = () => {
-            if (req.readyState == XMLHttpRequest.DONE) {
-                console.log(req.responseText);
-            }
-        };
-
-        req.open("PUT", "https://api.jsonbin.io/v3/b/64081c59c0e7653a058439f8?meta=false", true);
-        req.setRequestHeader("Content-Type", "application/json");
-        req.setRequestHeader("X-Access-Key", "$2b$10$yCt1TczM9drUVreBsiuKjubH1z/W5ZkloK7Aj/NQFxAbBiqWNN8OO");
-        req.send(JSON.stringify(books));
-    }
-
-    checker1=0;
-    checker2=0;
-
-    issueForm.reset();
-    bookDetails.innerHTML='';
-    userDetails.innerHTML='';
-    e.preventDefault();
-});
 // add new user function
 document.getElementById('btn-add-user').addEventListener('click', function(){
     hidAll();
@@ -456,6 +235,7 @@ userForm.addEventListener('submit', function (e) {
     e.preventDefault();
 });
 
+
 document.getElementById('btn-add-book').addEventListener('click', function(){
     hidAll();
     document.getElementById('add-new-book-form').classList.toggle('hiddennn');
@@ -479,16 +259,17 @@ function libraryFormSubmit(e) {
     let author = document.getElementById('author').value;
     let publisher = document.getElementById('bookPublisher').value;
     let type = document.getElementById('bookType').value;
+    let lockerNo = document.getElementById('locker-no').value;
 
 
-    let book = new Book(id, name, author, publisher, type);
+    let book = new Book(id, name, author, publisher, type, lockerNo);
     books.push(book);
 
     let display = new Display();
 
     if (display.validate(book)) {
 
-        display.add(book);
+        display.add([book]);
         display.clear();
 
         // uploading new book to database
@@ -517,9 +298,391 @@ function libraryFormSubmit(e) {
 }
 
 
+// displaying books
+
+setTimeout(function () {
+
+const display = new Display().add;
+display(books);
+    // let tableBody = document.getElementById('tableBody');
+    // for (const book of books) {
+    //     if (book.issuedTo !== 0) {
+    //         const issueed = new Display().issue;
+    //         issueed(book);
+    //     }
+    //     else {
+    //         const uiString = `<tr>
+    //                         <td>${book.name}</td>
+    //                         <td>${book.id}</td>
+    //                         <td>${book.author}</td>
+    //                         <td>${book.publisher}</td>
+    //                         <td>${book.type}</td>
+    //                         <td>${book.lockerNo}</td>
+    
+    //                       </tr>`;
+    //         tableBody.innerHTML += uiString;
+    //     }
+    // }
+}, 5000);
+
+document.getElementById('books').addEventListener('click', function () {
+    hidAll();
+    document.getElementById('std-p').classList.toggle('hiddennn');
+    document.getElementById('search-bar').classList.toggle('hiddennn');
+
+});
+
+document.getElementById('books1').addEventListener('click', function () {
+    hidAll();
+    document.getElementById('std-p').classList.toggle('hiddennn');
+    document.getElementById('search-bar').classList.toggle('hiddennn');
+
+});
+
+document.getElementById('dashboard-btn').addEventListener('click', function () {
+    hidAll();
+    document.getElementById('user-dashboard').classList.remove('hiddennn');
+});
+document.getElementById('std-only1').addEventListener('click', function () {
+    hidAll();
+    document.getElementById('user-dashboard').classList.remove('hiddennn');
+});
+
+
+// login script
+const adminP = document.querySelectorAll(".admin-only");
+const stdP = document.getElementById("std-p");
+const loginP = document.getElementById("login-p");
+
+const dashboard = new Display().dashboard;
+// login pop
+document.querySelector("#login").addEventListener("click", function () {
+    document.querySelector(".login-pop").classList.toggle("hiddennn");
+});
+document.querySelector("#login-logo").addEventListener("click", function () {
+    document.querySelector(".login-pop").classList.toggle("hiddennn");
+});
+
+
+document.querySelector(".btnnn").addEventListener("click", function () {
+    document.querySelector(".login-pop").classList.toggle("hiddennn");
+});
+
+const hid = function () {
+    loginP.classList.toggle("hiddennn");
+    document.getElementById("sidebar").classList.toggle("hiddennn");
+    document.getElementById("buttom-bar").classList.toggle("hiddennn");
+};
+
+const hidAdmin = function () {
+    for (const btn of adminP) {
+        btn.classList.toggle("hiddennn");
+    }
+};
+const afterLogin = function () {
+    document.getElementById('user-logo').classList.toggle('hiddennn');
+    document.getElementById('login-logo').classList.toggle('hiddennn');
+
+}
+
+
+document.querySelector("#subb").addEventListener("click", function () {
+    const user = document.querySelector("#user").value;
+    const password = document.querySelector("#passwd").value;
+
+    // console.log(uPower);
+    if (users.admin.name === user) {
+        // adminP.classList.toggle('hiddennn');
+        stdP.classList.toggle("hiddennn");
+        document.getElementById("std-only").classList.toggle("hiddennn");
+        document.getElementById("std-only1").classList.toggle("hiddennn");
+        hidAdmin();
+        hid();
+        afterLogin();
+        document.getElementById("search-bar").classList.toggle("hiddennn");
+    }
+    else {
+        for (let input of users.users) {
+            if (String(input.id) === user && input.passwd === password) {
+                dashboard(input);
+                // common
+                stdP.classList.toggle("hiddennn");
+                // document.getElementById('userForm').classList.toggle('hiddennn');
+                hid();
+                afterLogin();
+                document.getElementById("search-bar").classList.toggle("hiddennn");
+            }
+            else {
+                document.querySelector('#check-user').innerHTML = 'check the user name and password';
+            }
+        }
+    }
+});
+
+const userDetails = document.getElementById('issue-user-tableBody');
+const bookDetails = document.getElementById('issue-book-tableBody');
+let indexOfUser, indexOfBook, userId, bookId, checker1 = 0, checker2 = 0;
 
 
 
+document.getElementById('issue-page').addEventListener('click', function () {
+    hidAll()
+    document.getElementById('issue-book-user-form').classList.toggle('hiddennn');
+})
+
+document.getElementById('issue-page1').addEventListener('click', function () {
+    hidAll()
+    document.getElementById('issue-book-user-form').classList.toggle('hiddennn');
+})
+
+document.getElementById('user-id').addEventListener('change', function (e) {
+
+    for (const [index, user] of users.users.entries()) {
+        if (user.id === Number(e.target.value)) {
+            userDetails.innerHTML = `<tr>
+                                     <td>${user.name}</td>
+                                     <td>${user.class}</td>
+                                 </tr>`;
+            indexOfUser = index;
+            userId = user.id;
+            checker1 = 1;
+            break;
+        }
+        else {
+            checker1 = 0;
+            userDetails.innerHTML = '';
+        }
+
+    }
+});
+
+document.getElementById('book-id').addEventListener('change', function (e) {
+    for (const [index, book] of books.entries()) {
+        if (Number(book.id) === Number(e.target.value)) {
+            bookDetails.innerHTML = `<tr>
+                                     <td>${book.name}</td>
+                                     <td>${book.author}</td>
+                                     <td>${book.publisher}</td>
+
+                                 </tr>`;
+            indexOfBook = index;
+            bookId = book.id;
+            checker2 = 1;
+            break;
+        }
+        else {
+            checker2 = 0;
+            bookDetails.innerHTML = '';
+        }
+
+    }
+});
+
+// issuing book to user
+const issueForm = document.getElementById('issue-book-form');
+issueForm.addEventListener('submit', function (e) {
+    if (checker1 + checker2 === 2) {
+        users.users[indexOfUser].issueBooksId.push(bookId);
+        books[indexOfBook].issuedTo = userId;
+        books[indexOfBook].issuedDate = document.getElementById('date').value;
+        const issueed = new Display().issue;
+        issueed(books[indexOfBook]);
 
 
+        // uploading issued details to database
+        let req = new XMLHttpRequest();
 
+        req.onreadystatechange = () => {
+            if (req.readyState == XMLHttpRequest.DONE) {
+                console.log(req.responseText);
+            }
+        };
+
+        req.open("PUT", "https://api.jsonbin.io/v3/b/64081c59c0e7653a058439f8?meta=false", true);
+        req.setRequestHeader("Content-Type", "application/json");
+        req.setRequestHeader("X-Access-Key", "$2b$10$yCt1TczM9drUVreBsiuKjubH1z/W5ZkloK7Aj/NQFxAbBiqWNN8OO");
+        req.send(JSON.stringify(books));
+
+        fetch('https://api.jsonbin.io/v3/b/64030be9ace6f33a22e92074?meta=false ', {
+            method: 'PUT',
+            body: JSON.stringify(users),
+            headers: {
+                'Content-type': 'application/json',
+                "X-Access-Key": "$2b$10$yCt1TczM9drUVreBsiuKjubH1z/W5ZkloK7Aj/NQFxAbBiqWNN8OO",
+            },
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+    }
+
+    checker1 = 0;
+    checker2 = 0;
+
+    issueForm.reset();
+    bookDetails.innerHTML = '';
+    userDetails.innerHTML = '';
+    e.preventDefault();
+});
+
+class DisplaySearchBook {
+
+    deleteBook(books, indexs) {
+        indexs = indexs.reverse();
+        for (const index of indexs) {
+            books.splice(index, 1);
+        }
+        return books
+    }
+
+    search(bookName, findBy) {
+        document.getElementById('tableBody').innerHTML = '';
+        const add = new Display().add;
+        const sBa = [];
+        let clonedBooks = JSON.parse(JSON.stringify(books));
+        for (const [index, book] of books.entries()) {
+            if (book[findBy].toLowerCase() === bookName.toLowerCase()) {
+                add([book]);
+                sBa.push(index);
+            }
+        }
+        clonedBooks = this.deleteBook(clonedBooks, sBa);
+        const sName = bookName.split(' ');
+
+        for (const book of clonedBooks) {
+            const cBook = book[findBy].split(' ');
+            loop1:
+            for (const name of sName) {
+                loop2:
+                for (const spName of cBook) {
+                    if (spName.toLowerCase() === name.toLowerCase()) {
+                        add([book]);
+                        break loop1;
+                    }
+                }
+            }
+        }
+
+    }
+
+}
+
+document.getElementById('search').addEventListener('click', function (e) {
+    const name = document.getElementById('search-txt').value;
+    let type;
+    let fiction = document.getElementById('fiction');
+    let programming = document.getElementById('programming');
+    let cooking = document.getElementById('cooking');
+    let btype = document.getElementById('btype');
+    const displaySearch = new DisplaySearchBook();
+
+    if (fiction.checked) {
+        type = fiction.value;
+    }
+    else if (programming.checked) {
+        type = programming.value;
+    }
+    else if (cooking.checked) {
+        type = cooking.value;
+    }
+    else if (btype.checked) {
+        type = btype.value;
+    }
+    if (name === '') {
+        const display = new Display().add;
+        display(books);
+    }
+    else{
+        displaySearch.search(name, type);
+    }
+    e.preventDefault();
+        // console.log(name , type);
+});
+
+const searchByMenu = document.querySelectorAll('.search-by-btn');
+for (const sByM of searchByMenu) {
+    sByM.addEventListener('click', function () {
+        document.querySelector('.dropdown-menu').classList.toggle('show');
+    });
+}
+
+
+class DisplaySearchBook {
+
+    deleteBook(books, indexs) {
+        indexs = indexs.reverse();
+        for (const index of indexs) {
+            books.splice(index, 1);
+        }
+        return books
+    }
+
+    search(bookName, findBy) {
+        document.getElementById('tableBody').innerHTML = '';
+        const add = new Display().add;
+        const sBa = [];
+        let clonedBooks = JSON.parse(JSON.stringify(books));
+        for (const [index, book] of books.entries()) {
+            if (book[findBy].toLowerCase() === bookName.toLowerCase()) {
+                add([book]);
+                sBa.push(index);
+            }
+        }
+        clonedBooks = this.deleteBook(clonedBooks, sBa);
+        const sName = bookName.split(' ');
+
+        for (const book of clonedBooks) {
+            const cBook = book[findBy].split(' ');
+            loop1:
+            for (const name of sName) {
+                loop2:
+                for (const spName of cBook) {
+                    if (spName.toLowerCase() === name.toLowerCase()) {
+                        add([book]);
+                        break loop1;
+                    }
+                }
+            }
+        }
+
+    }
+
+}
+
+document.getElementById('search').addEventListener('click', function (e) {
+    const name = document.getElementById('search-txt').value;
+    let type;
+    let fiction = document.getElementById('fiction');
+    let programming = document.getElementById('programming');
+    let cooking = document.getElementById('cooking');
+    let btype = document.getElementById('btype');
+    const displaySearch = new DisplaySearchBook();
+
+    if (fiction.checked) {
+        type = fiction.value;
+    }
+    else if (programming.checked) {
+        type = programming.value;
+    }
+    else if (cooking.checked) {
+        type = cooking.value;
+    }
+    else if (btype.checked) {
+        type = btype.value;
+    }
+    if (name === '') {
+        const display = new Display().add;
+        display(books);
+    }
+    else{
+        displaySearch.search(name, type);
+    }
+    e.preventDefault();
+        // console.log(name , type);
+});
+
+const searchByMenu = document.querySelectorAll('.search-by-btn');
+for (const sByM of searchByMenu) {
+    sByM.addEventListener('click', function () {
+        document.querySelector('.dropdown-menu').classList.toggle('show');
+    });
+}
