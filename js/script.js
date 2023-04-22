@@ -331,6 +331,10 @@ document.getElementById('books').addEventListener('click', function () {
     document.getElementById('search-bar').classList.toggle('hiddennn');
 
 });
+document.getElementById('return-p1').addEventListener('click', function () {
+    hidAll();
+    document.getElementById('return-page').classList.toggle('hiddennn');
+});
 
 document.getElementById('books1').addEventListener('click', function () {
     hidAll();
