@@ -2,12 +2,26 @@
 .dropdown-menu.show {
   display: block;
 }
+.mdi.mdi-account-circle {
+  font-size: 2.4rem;
+}
+.mdi.mdi-login,.mdi.mdi-logout{
+  font-size: 2.2rem;
+}
+.text-danger {
+  color: #642a2d !important;
+}
+.logo-color {
+  color:#0797a6 !important;
+}
 
 .login-pop {
   position: absolute !important;
-  top: 10%;
-  left: 35%;
+  top: 15% !important;
+  /* left: 35% !important; */
   background-color: rgba(2, 10, 22, 0.856) !important;
+  margin-left: 35% ;
+  margin-top: 0px;
 }
 
 .btnnn {
@@ -42,16 +56,6 @@
     display: none;
   }
 
-
-
-/*-------------------------------------------------------------------*/
-/* === Boostrap Main SCSS === */
-/*!
- * Bootstrap v4.5.3 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
 :root {
   --blue: #5E50F9;
   --indigo: #6610f2;
@@ -295,12 +299,6 @@ hr {
   .col-lg-4 {
     flex: 0 0 33.33333%;
     max-width: 33.33333%; } }
-   
-   
-   
-    
-    
-   
 
 .table {
   width: 100%;
@@ -484,6 +482,7 @@ input[type="button"].btn-block {
 
 .dropdown-menu {
   position: absolute;
+  padding-left: 25px !important;
   top: 100%;
   left: 0;
   z-index: 1000;
@@ -572,14 +571,11 @@ input[type="button"].btn-block {
     padding-right: 0px;
   }
   }
-  .login-pop {
-    left: 0px;
-  }
-  }
+ 
 
 @media (max-width: 767.98px) {
   .login-pop {
-    left: 0px;
+    margin-left: 0px ;
   } }
 
 .card {
@@ -763,13 +759,6 @@ button.bg-danger:focus {
      .table th {
       background-color: #ffffff !important; } }
 
-/*-------------------------------------------------------------------*/
-/* === Template mixins === */
-/* Miscellaneous Mixins */
-
-/* Animation Mixins */
-
-
  .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .dropdown-menu {
   animation-name: dropdownAnimation;
   -webkit-animation-duration: 0.25s;
@@ -784,10 +773,6 @@ button.bg-danger:focus {
   animation-fill-mode: both; }
 
 
-
-/*-------------------------------------------------------------------*/
-/* === Core Styles === */
-/* Reset Styles */
 body {
   padding: 0;
   margin: 0;
@@ -875,11 +860,6 @@ input:focus {
   border-color: transparent;
   outline: none; }
 
-/* Fonts */
-
-/* Backgrounds  */
-
-/* Typography */
 body {
   font-size: 1rem;
   font-weight: normal;
@@ -961,15 +941,7 @@ html {
 .flex-grow {
   flex-grow: 1; }
 
-/* Demo Styles */
 
-/*-------------------------------------------------------------------*/
-/* === Components === */
-/* Badges */
-
-/*Badge variations*/
-
-/*Badge outlined variations*/
 
 /* Buttons */
 .btn {
@@ -1086,10 +1058,6 @@ html {
 
 /* Icons */
 
-/* Loaders */
-
-
-/* Preview */
 
 .icon {
   display: flex;
@@ -1152,99 +1120,11 @@ html {
       height: 30px;
       border-radius: 100%; }
 
-/* gradient pills */
 
-/* Tabs */
-
-/*-------------------------------------------------------------------*/
-/* === Email === */
-/*-------------------------------------------------------------------*/
-/* === Plugin overrides === */
-/* Ace Editor */
-
-/* Avgrund Popup */
-
-/* Optional close button styles */
-
-/* Chartist */
-
-/* CodeMirror */
-
-/* Colcade */
 * {
   box-sizing: border-box; }
 
-/* hide two middle */
 
-/* Colorpicker */
-
-/* Context Menu */
-
-/* Data Tables */
-
-/* Datepicker */
-
-/* Dropify */
-
-/* Dropzone */
-
-/* Flot chart */
-
-/* Full Calendar */
-
-/* Google Charts */
-
-/* Icheck */
-
-/* Jquery File Upload */
-
-/* Js-grid */
-
-/* Jvectormap */
-
-/* Light Gallery */
-
-/* Listify */
-
-/* No-ui-slider */
-
-/* Slider Color variations */
-
-/* Owl-carousel */
-
-/* Progressbar-js */
-
-/* Pws-tabs */
-
-/* Quill Editor */
-
-/* Rating */
-
-/* Select2 */
-
-/* Summernote Editor */
-
-/* SweetAlert */
-
-/* Switchery */
-
-/* Tags */
-
-/* TinyMCE Editor */
-
-/* Toast */
-
-/* Typeahead */
-
-/* Wysi Editor */
-
-/* X-editable */
-
-/* Wizard */
-
-/*-------------------------------------------------------------------*/
-/* === Landing screens === */
-/* Auth */
 
 /* Navbar */
 .navbar {
