@@ -39,7 +39,7 @@ reqe.send();
 setTimeout(function () {
     books = JSON.parse(jBook);
     users =JSON.parse(users);
-}, 5000);
+}, 6000);
 
 function hidAll(){
     document.getElementById('std-p').classList.add('hiddennn');
@@ -595,7 +595,7 @@ display(books);
     //         tableBody.innerHTML += uiString;
     //     }
     // }
-}, 5000);
+}, 6100);
 
 document.getElementById('books').addEventListener('click', function () {
     hidAll();
@@ -661,7 +661,7 @@ document.querySelector("#subb").addEventListener("click", function () {
     const password = document.querySelector("#passwd").value;
 
     // console.log(uPower);
-    if (users.admin.name === user) {
+    if (users.admin.name === user && users.admin.passwd === password) {
         // adminP.classList.toggle('hiddennn');
         stdP.classList.toggle("hiddennn");
         document.getElementById("std-only").classList.toggle("hiddennn");
